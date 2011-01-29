@@ -6,7 +6,7 @@
 
 What does it do:
 ================
-This contrib gives the option to collect customer credit card details and email them as comment.
+This contrib gives the option to collect customer credit card details and email them to the store admin to process manaually offline.
 
 
 Main features:
@@ -37,7 +37,6 @@ http://forum.opencart.com/
 
 History:
 ========
-v0.9.3 - 2011-Jan-29 - Alexis Moreno
 v0.9.2 - 2011-Jan-28 - Alexis Moreno
 v079.1 - 2009-Feb-3 - Qphoria
 - Original Release

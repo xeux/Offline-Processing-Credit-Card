@@ -1,8 +1,7 @@
 <?php 
 class ModelPaymentOfflineCC extends Model {
-  	public function getMethod($address) {
+  	function getMethod($address) {
         $this->load->language('payment/offline_cc');
-        
 		if ($this->config->get('offline_cc_status')) {
       		if (!$this->config->get('offline_cc_geo_zone_id')) {
         		$status = true;
