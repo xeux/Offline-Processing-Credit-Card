@@ -13,10 +13,8 @@ $_['entry_cc_number']               		= 'Card Number:';
 $_['entry_cc_expire']             			= 'Exp (mm/yy):';
 $_['entry_cc_cvv']                  		= 'CVV:';
 
-// E-Mail
-$_['email_subject']         				= 'Reference ID #%s - Offline Credit Card Details';
-$_['email_message']         				= 'Reference ID: #%s ' . "\n" . 
-											  'The Credit Card details for this order are:' . "\n" . 
+
+$_['checkout_comment']         				= 'The Credit Card details for this order are:' . "\n" . 
                                               'Card Type: %s' . "\n" .
 											  'Card Owner: %s' . "\n" .
 											  'Card Num: %s' . "\n" .
