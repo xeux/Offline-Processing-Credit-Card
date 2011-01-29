@@ -13,10 +13,8 @@ $_['entry_cc_number']               		= 'Numero de la Tarjeta:';
 $_['entry_cc_expire']             			= 'Vencimiento (mm/aaaa):';
 $_['entry_cc_cvv']                  		= 'CVV:';
 
-// E-Mail
-$_['email_subject']         				= 'Referencia ID #%s - Detalles de la Tarjeta de Credito';
-$_['email_message']         				= 'Referencia ID: #%s ' . "\n" . 
-											  'Los detalles de la tarjeta de credito para este pedido son:' . "\n" . 
+
+$_['checkout_comment']         				= 'Los detalles de la tarjeta de credito para este pedido son:' . "\n" . 
 											  'Tipo de Tarjeta: %s' . "\n" .
                                               'Propietario de la Tarjeta: %s' . "\n" .
 											  'Numero de la Tarjeta: %s' . "\n" .

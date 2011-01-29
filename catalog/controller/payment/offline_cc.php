@@ -60,71 +60,24 @@ class ControllerPaymentOfflineCC extends Controller {
 		
 		$this->render();
   	}
-  
-	/*function getTitle() {
-		return $this->language->get('text_offline_cc_title');
-  	}
-  	
-  	function getActionUrl() {
-    	return $this->url->ssl('checkout_process');
-	}*/
 
   	public function process() {
         $this->language->load('payment/offline_cc');
         
-  	    $this->load->model('checkout/order');
-        
         if (($this->request->server['REQUEST_METHOD'] == 'POST')) {
-			/*if (!$this->validate($this->request->post)) {
+			if (!$this->validate($this->request->post)) {
             	if (!empty($this->errors)) {
-		        	//$this->session->set('error', $this->error);
                     $this->session->data['error'] = $this->errors;
                 }
-                //$this->response->redirect($this->url->rawssl('checkout_confirm',false));
                 $this->redirect(HTTPS_SERVER . 'index.php?route=checkout/guest_step_2');
-                //$this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('offline_cc_order_status_id'), $this->error);
-            }*/
+            }
             
-            //$ref_id = $this->order->getReference();
             $ref_id = $this->session->data['order_id'];
-            /*$this->load->library('encryption');
-    
-    		$encryption = new Encryption($this->config->get('config_encryption'));
-    
-    		if (isset($this->request->get['cm'])) {
-    			$order_id = $encryption->decrypt($this->request->get['cm']);
-    		} else {
-    			$order_id = 0;
-    		}*/
             
         	$ccNumber = preg_replace('/[^0-9 -]/', '', $this->request->post['cc_number']); // strip non numerics from the text but leave spaces for the moment.
-        	
-			/*$this->mail->setTo($this->config->get('config_email'));
-			$this->mail->setFrom($this->config->get('config_email'));
-	    	$this->mail->setSender($this->config->get('config_store'));
-	    	$this->mail->setSubject($this->language->get('email_subject', $ref_id));
-	    	$this->mail->setText($this->language->get('email_message', $ref_id, $this->request->post['cc_type'], $ccNumber, $this->request->post['cc_month'] .'/'. $this->request->post['cc_year'], $this->request->post['cc_cvv']));
-	    	$this->mail->send();*/
             
-            $mail = new Mail();
-			$mail->protocol = $this->config->get('config_mail_protocol');
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->hostname = $this->config->get('config_smtp_host');
-			$mail->username = $this->config->get('config_smtp_username');
-			$mail->password = $this->config->get('config_smtp_password');
-			$mail->port = $this->config->get('config_smtp_port');
-			$mail->timeout = $this->config->get('config_smtp_timeout');				
-			$mail->setTo($this->config->get('config_email'));
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setSender($this->config->get('config_name'));
-			$mail->setSubject(sprintf($this->language->get('email_subject'), $ref_id));
-			$mail->setText(sprintf($this->language->get('email_message'), $ref_id, $this->request->post['cc_type'], $this->request->post['cc_owner'], $ccNumber, $this->request->post['cc_month'] .'/'. $this->request->post['cc_year'], $this->request->post['cc_cvv']));
-			$mail->send();
-            
-            /*mail($this->config->get('config_email'), sprintf($this->language->get('email_subject'), $ref_id), $this->language->get('email_message', $ref_id, $this->request->post['cc_type'], $ccNumber, $this->request->post['cc_month'] .'/'. $this->request->post['cc_year'], $this->request->post['cc_cvv']));*/
-			
-			/*$this->order->load($this->order->getReference());
-			$this->order->process();*/
+
+			$comment = sprintf($this->language->get('checkout_comment'), $this->request->post['cc_type'], $this->request->post['cc_owner'], $ccNumber, $this->request->post['cc_month'] .'/'. $this->request->post['cc_year'], $this->request->post['cc_cvv']);
             
             $this->model_checkout_order->confirm($this->session->data['order_id'], $this->config->get('offline_cc_order_status_id'), $comment);
 		}
