@@ -1,0 +1,42 @@
+===============================================
+   Offline Processing Credit Card Extension
+      Designed for OpenCart v1.4
+===============================================
+
+
+What does it do:
+================
+This contrib gives the option to collect customer credit card details and email them to the store admin to process manaually offline.
+
+
+Main features:
+==============
+  * All credit card processing is done on your site. Customer never leaves.
+  * Uses creditcard algorithms to verify numbers and dates are valid before processing.
+  * Uses the new error handler on the checkout_confirm page to show any errors
+  * Works Universally since the credit card information is processed manually.
+
+
+How to install it:
+==================
+1) Unzip and upload the contents to the root directory of your OpenCart installation, preserving directory structure
+4) From the admin menu, go to 'Extensions->Payment'.
+5) Click "Install" to install the module, and click "Edit" to configre.
+
+
+Contribution:
+=============
+This extension is based in OPENCART OFFLINE CREDITCARD PAYMENT MODULE v079.1,
+Designed for OpenCart v0.7.9 Final by Qphoria
+http://code.google.com/p/open-cart/source/browse/trunk/contribs/0.7.9/payment_modules/offline_credit_card/?r=461
+
+Support Thread:
+===============
+http://forum.opencart.com/
+
+
+History:
+========
+v0.9.2 - 2011-Jan-28 - Alexis Moreno
+v079.1 - 2009-Feb-3 - Qphoria
+- Original Release
