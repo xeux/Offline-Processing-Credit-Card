@@ -29,6 +29,7 @@ Contribution:
 This extension is based in OPENCART OFFLINE CREDITCARD PAYMENT MODULE v079.1,
 Designed for OpenCart v0.7.9 Final by Qphoria
 http://code.google.com/p/open-cart/source/browse/trunk/contribs/0.7.9/payment_modules/offline_credit_card/?r=461
+aaron1988 ereg to preg_match fix  2011-Feb-3
 
 Support Thread:
 ===============
@@ -37,6 +38,7 @@ http://forum.opencart.com/
 
 History:
 ========
+v0.9.5 - 2011-Jan-29 - Alexis Moreno
 v0.9.4 - 2011-Jan-29 - Alexis Moreno
 v0.9.3 - 2011-Jan-29 - Alexis Moreno
 v0.9.2 - 2011-Jan-28 - Alexis Moreno

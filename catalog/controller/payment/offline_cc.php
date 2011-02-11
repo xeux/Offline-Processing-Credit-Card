@@ -125,11 +125,11 @@ class ControllerPaymentOfflineCC extends Controller {
         }
                        
         //  now we remove harmless spaces or dashes from the credit card number so that we can test it as a number.
-        $ccNumber = ereg_replace('[ -]', '', $ccNumber);
+        $ccNumber = preg_replace('[ -]', '', $ccNumber);
         
         //  and remove all non numerics from the following and validate them.
-        $ccMonth = ereg_replace('[^0-9]', '', $data['cc_month']);
-        $ccYear = ereg_replace('[^0-9]', '', $data['cc_year']);
+        $ccMonth = preg_replace('[^0-9]', '', $data['cc_month']);
+        $ccYear = preg_replace('[^0-9]', '', $data['cc_year']);
  
         if (strlen($ccMonth) <> strlen($data['cc_month'])) {
             $this->errors .= '<p>'.$this->language->get('error_cc_month_not_numeric').'</p>';       
@@ -171,15 +171,15 @@ class ControllerPaymentOfflineCC extends Controller {
         //  Validate the number(s) match the card type  
         switch ($data['cc_type']) {
             case 'mastercard':
-                if (!(ereg("^5[1-5][0-9]{14}$", $ccNumber)))
+                if (!(preg_match('/^5[1-5][0-9]{14}$/', $ccNumber)))
                     $this->errors .= '<p>'.$this->language->get('error_cc_number_invalid_for_type').'</p>'; 
-                if (!(ereg("^[0-9][0-9][0-9]$", $ccCVV)))
+                if (!(preg_match('/^[0-9][0-9][0-9]$/', $data['cc_cvv'])))
                     $this->errors .= '<p>'.$this->language->get('error_mastercard_cvv').'</p>';   
                 break;
             case 'visa':
-                if (!(ereg("^4[0-9]{12}([0-9]{3})?$", $ccNumber)))
+                if (!(preg_match('^/4[0-9]{12}([0-9]{3})?$/', $ccNumber)))
                     $this->errors .= '<p>'.$this->language->get('error_cc_number_invalid_for_type').'</p>'; 
-                if (!(ereg("^[0-9][0-9][0-9]$", $data['cc_cvv'])))
+                if (!(preg_match('/^[0-9][0-9][0-9]$/', $data['cc_cvv'])))
                     $this->errors .= '<p>'.$this->language->get('error_visa_cvv').'</p>';   
                 break;
              default:
